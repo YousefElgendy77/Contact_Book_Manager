@@ -25,6 +25,7 @@ void print_menu()
 void adding_message();
 void person_message();
 Person readInfo();
+void print_address(contact_book &contact);
 void add_contact(contact_book &contact);
 void print_all_contacts(contact_book &contact);
 void print_fav_contacts(contact_book &contact);
@@ -37,16 +38,10 @@ void update_contact_info(contact_book &contact);
 void reverse_all_contacts(contact_book &contact);
 int main()
 {
-    // Vector<string> phone_number;
-    // Vector<string> emails;
-    // Address a("11", "22", "33", "44");
-    // Person p("AA", "SS", phone_number, emails, "DD", 0, a);
-    // cout << a.get_city() << endl;
-    // a.get_full_address();
-    // cout << a;
-    // return 0;
-    int choise;
     contact_book contact;
+    print_address(contact);
+    return 0;
+    int choise;
     do
     {
         print_menu();
@@ -127,6 +122,8 @@ Person readInfo()
 
     cout << "classification (Friend , Work , Family , Other) : ";
     getline(cin, classification);
+    for (auto c : classification)
+        tolower(c);
 
     bool isFav;
     string favourite;
@@ -266,4 +263,9 @@ void save_to_file(contact_book &contact)
 void load_from_file(contact_book &contact)
 {
     contact.load();
+}
+void print_address(contact_book &contact)
+{
+    Person object = readInfo();
+    contact.print_address_in();
 }

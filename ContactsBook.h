@@ -35,10 +35,7 @@ public:
              << setw(18) << left << p.get_last_name()
              << setw(20) << left << p.get_Classification();
 
-        cout << setw(7) << left << a.get_street_number()
-             << setw(7) << left << a.get_street_name()
-             << setw(7) << left << a.get_city()
-             << setw(7) << left << a.get_country()
+        cout << setw(28) << left << a.get_full_address()
              << setw(7) << left << (p.get_fav() ? "Yes" : "No");
 
         cout << setw(30) << left;
@@ -74,7 +71,8 @@ public:
     void search_by_class(string classify)
     {
         bool found = false;
-
+        for (auto c : classify)
+            tolower(c);
         for (int i = 0; i < contacts.getSize(); ++i)
         {
             if (contacts[i].get_Classification() == classify)
@@ -109,7 +107,7 @@ public:
                  << setw(18) << left << p.get_first_name()
                  << setw(18) << left << p.get_last_name()
                  << setw(20) << left << p.get_Classification()
-                 << setw(28) << left << a
+                 << setw(28) << left << a.get_full_address()
                  << setw(7) << left << (p.get_fav() ? "Yes" : "No");
 
             cout << setw(30) << left;
@@ -138,10 +136,7 @@ public:
                  << setw(18) << left << p.get_last_name()
                  << setw(20) << left << p.get_Classification();
 
-            cout << setw(7) << left << a.get_street_number()
-                 << setw(7) << left << a.get_street_name()
-                 << setw(7) << left << a.get_city()
-                 << setw(7) << left << a.get_country()
+            cout << setw(28) << left << a.get_full_address()
                  << setw(7) << left << (p.get_fav() ? "Yes" : "No");
 
             cout << setw(30) << left;
@@ -157,7 +152,7 @@ public:
     }
     void remove_contact(int index)
     {
-        contacts.delete_at(index);
+        contacts.delete_at(index - 1);
         cout << "Contact is deleted successfully.\n";
     }
     void update_contact(const Person p, int index)
@@ -261,6 +256,11 @@ public:
 
         file.close();
         cout << "Data loaded from file.\n";
+    }
+    void print_address_in()
+    {
+        Address address;
+        cout << address;
     }
 };
 #endif

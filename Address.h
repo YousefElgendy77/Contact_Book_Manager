@@ -65,10 +65,9 @@ public:
         }
         return *this;
     }
-    void get_full_address() const
+    string get_full_address() const
     {
-        cout << "Full Adress : ";
-        cout << street_number << ' ' << street_name << ' ' << city << ' ' << country << '\n';
+        return street_number + " " + street_name + " " + city + " " + country;
     }
     friend ostream &operator<<(ostream &os, const Address &address);
 };

@@ -142,7 +142,7 @@ ostream &operator<<(ostream &os, const Person &person)
     {
         os << person.get_emails()[i] << ' ';
     }
-    os << setw(12) << person.get_address() << ' ';
+    person.print_address();
     return os;
 }
 #endif
