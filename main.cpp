@@ -25,7 +25,6 @@ void print_menu()
 void adding_message();
 void person_message();
 Person readInfo();
-void print_address(contact_book &contact);
 void add_contact(contact_book &contact);
 void print_all_contacts(contact_book &contact);
 void print_fav_contacts(contact_book &contact);
@@ -38,10 +37,8 @@ void update_contact_info(contact_book &contact);
 void reverse_all_contacts(contact_book &contact);
 int main()
 {
-    contact_book contact;
-    print_address(contact);
-    return 0;
     int choise;
+    contact_book contact;
     do
     {
         print_menu();
@@ -263,9 +260,4 @@ void save_to_file(contact_book &contact)
 void load_from_file(contact_book &contact)
 {
     contact.load();
-}
-void print_address(contact_book &contact)
-{
-    Person object = readInfo();
-    contact.print_address_in();
 }

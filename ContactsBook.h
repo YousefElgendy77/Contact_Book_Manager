@@ -28,14 +28,13 @@ public:
     {
         print_header();
 
-        Person p = contacts.getElement(index);
+        Person p = contacts[index];
         Address a = p.get_address();
         cout << setw(5) << left << index + 1
              << setw(18) << left << p.get_first_name()
              << setw(18) << left << p.get_last_name()
-             << setw(20) << left << p.get_Classification();
-
-        cout << setw(28) << left << a.get_full_address()
+             << setw(20) << left << p.get_Classification()
+             << setw(28) << left << a.get_full_address()
              << setw(7) << left << (p.get_fav() ? "Yes" : "No");
 
         cout << setw(30) << left;
@@ -101,13 +100,13 @@ public:
 
         for (int i = 0; i < contacts.getSize(); ++i)
         {
-            Person p = contacts.getElement(i);
+            Person p = contacts[i];
             Address a = p.get_address();
             cout << setw(5) << left << i + 1
                  << setw(18) << left << p.get_first_name()
                  << setw(18) << left << p.get_last_name()
                  << setw(20) << left << p.get_Classification()
-                 << setw(28) << left << a.get_full_address()
+                 << setw(28) << left << add
                  << setw(7) << left << (p.get_fav() ? "Yes" : "No");
 
             cout << setw(30) << left;
@@ -127,16 +126,15 @@ public:
 
         for (int i = 0; i < contacts.getSize(); ++i)
         {
-            Person p = contacts.getElement(i);
+            Person p = contacts[i];
             Address a = p.get_address();
             if (!p.get_fav())
                 continue;
             cout << setw(5) << left << i + 1
                  << setw(18) << left << p.get_first_name()
                  << setw(18) << left << p.get_last_name()
-                 << setw(20) << left << p.get_Classification();
-
-            cout << setw(28) << left << a.get_full_address()
+                 << setw(20) << left << p.get_Classification()
+                 << setw(28) << left << a.get_full_address()
                  << setw(7) << left << (p.get_fav() ? "Yes" : "No");
 
             cout << setw(30) << left;
@@ -184,16 +182,13 @@ public:
 
         for (int i = 0; i < contacts.getSize(); ++i)
         {
-            Person p = contacts.getElement(i);
+            Person p = contacts[i];
             Address a = p.get_address();
             file << setw(5) << left << i + 1
                  << setw(18) << left << p.get_first_name()
                  << setw(18) << left << p.get_last_name()
                  << setw(20) << left << p.get_Classification()
-                 << setw(7) << left << a.get_street_number()
-                 << setw(7) << left << a.get_street_name()
-                 << setw(7) << left << a.get_city()
-                 << setw(7) << left << a.get_country()
+                 << setw(28) << left << a.get_full_address()
                  << setw(7) << left << (p.get_fav() ? "Yes" : "No");
 
             file << setw(30) << left;
@@ -256,11 +251,6 @@ public:
 
         file.close();
         cout << "Data loaded from file.\n";
-    }
-    void print_address_in()
-    {
-        Address address;
-        cout << address;
     }
 };
 #endif

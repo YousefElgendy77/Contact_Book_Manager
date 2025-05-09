@@ -67,7 +67,8 @@ public:
     }
     string get_full_address() const
     {
-        return street_number + " " + street_name + " " + city + " " + country;
+        string add = street_number + ' ' + street_name + ' ' + city + ' ' + country;
+        return add;
     }
     friend ostream &operator<<(ostream &os, const Address &address);
 };
